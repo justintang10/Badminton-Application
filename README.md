@@ -12,7 +12,7 @@ Anybody that loves to make badminton can use to app to keep track of the score a
 in doubles when the position of the players are always changing. This project is of interest to me becuase 
 I love the sport of badminton and am that person that always forget who is serving. 
 ## User Story
-- As a user, I want to be able to add players to the list of players
+- As a user, I want to be able to add players(X) to the current session that is being played(Y)
 - As a user, I want to be able to see the amount of players in the session
-- As a user, I want to be able to see the post match statistics
+- As a user, I want to be able to keep track of scoring for the match
 - As a user, I want to be able to see a players games played and their win loss ratio
