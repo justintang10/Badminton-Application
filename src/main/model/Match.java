@@ -69,8 +69,8 @@ public class Match {
             winnerGame();
             return true;
         } else if ((pointsTeamA.get(game) >= deuces && pointsTeamB.get(game) >= deuces)
-                && ((pointsTeamA.get(game) - (pointsTeamB.get(game)) != 2)
-                || (pointsTeamB.get(game) - (pointsTeamA.get(game)) != 2))) {
+                && ((pointsTeamA.get(game) - (pointsTeamB.get(game)) < 2)
+                || (pointsTeamB.get(game) - (pointsTeamA.get(game)) < 2))) {
             return false;
         } else if (pointsTeamB.get(game) == winningPoint) {
             pointsTeamB.set(0, (pointsTeamB.get(0) + 1));
