@@ -62,7 +62,6 @@ public class MatchTest {
         assertEquals(Arrays.asList(2, 4, 0, 5), match1.getTeamAPoints());
     }
 
-    @SuppressWarnings("methodlength")
     @Test
     void testNextRound() {
         match1.addPoint(1);
@@ -135,5 +134,32 @@ public class MatchTest {
         assertEquals(1, player1.getLoss());
         assertEquals(0, player2.getLoss());
         assertTrue(match1.checkIfGameIsOver());
+    }
+
+    @Test
+    void testDueces() {
+        Player player1 = new Player("justin");
+        Player player2 = new Player("tang");
+        match1.addPlayersTeamA(player1);
+        match1.addPlayersTeamB(player2);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(1);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.winLoss();
+        assertEquals(match1.getTeamB(),match1.getMatchWinner());
+        assertEquals(0, player1.getWins());
+        assertEquals(1, player2.getWins());
+        assertEquals(1, player1.getLoss());
+        assertEquals(0, player2.getLoss());
     }
 }

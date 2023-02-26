@@ -7,13 +7,16 @@ import model.Player;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BadmintonApp {
+// BadmintonAppConsole is the user interface side of the Badminton app in the terminal
+// starts the main app loop, asks for user input when required, and prints the app objects onto the console
+
+public class BadmintonAppConsole {
     private Scanner input;
-    private ListOfPlayer list;
+    private ListOfPlayer listOfPlayer;
     private Match match;
 
-    // EFFECTS: runs the teller application
-    public BadmintonApp() {
+    // EFFECTS: runs the badmintton application
+    public BadmintonAppConsole() {
         runBadmintonApp();
     }
 
@@ -67,30 +70,35 @@ public class BadmintonApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes ListofPlayers
+    // EFFECTS: initializes listofPlayers and Scanner
     private void init() {
-        list = new ListOfPlayer();
+        listOfPlayer = new ListOfPlayer();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a player based on the name inputted and adds player to listOfPlayer
     private void addPlayer() {
         System.out.println("Enter name of player");
         String name = input.next();
-        list.addPlayerByName(name);
+        listOfPlayer.addPlayerByName(name);
     }
 
+    // EFFECT: prints out the names of listOfPlayer
     private void getPlayersInSession() {
-        System.out.println(list.listOfPlayerNames());
+        System.out.println(listOfPlayer.listOfPlayerNames());
     }
 
+    // REQUIRES: input has to be a player that is in listOfPlayer
+    // EFFECTS: prints out the stats of player in listOfPlayer
     private void getStats() {
         System.out.println("Which player?");
-        System.out.println(list.listOfPlayerNames());
+        System.out.println(listOfPlayer.listOfPlayerNames());
         String name = input.next();
-        int index = list.getPlayerIndex(name);
+        int index = listOfPlayer.getPlayerIndex(name);
         if (index != -1) {
-            Player playerstat = list.getPlayer(name);
+            Player playerstat = listOfPlayer.getPlayer(name);
             System.out.println("Wins: " + playerstat.getWins());
             System.out.println("Losses: " + playerstat.getLoss());
         } else {
@@ -99,7 +107,7 @@ public class BadmintonApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input
+    // EFFECTS: processes user input during a match
     private void runMatch() {
         boolean keepGoing = true;
         String command = null;
@@ -125,12 +133,14 @@ public class BadmintonApp {
         System.out.println("\nThe winner is " + match.getMatchWinner());
     }
 
+    // EFFECTS: prints the score of the match
     private void printScore() {
         System.out.println("Score: ");
         System.out.println("Team A: " + match.getTeamAPoints());
         System.out.println("Team B: " + match.getTeamBPoints());
     }
 
+    // EFFECTS: displays menu of options to user during a match
     private void matchMenu() {
         System.out.println("1 -> point for team A");
         System.out.println("2 -> point for team B");
@@ -138,7 +148,7 @@ public class BadmintonApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user command
+    // EFFECTS: processes user command during a match
     private void processMatchCommand(String command) {
         if (command.equals("1")) {
             matchPoints(1);
@@ -149,18 +159,23 @@ public class BadmintonApp {
         }
     }
 
+    // REQUIRES: input be a input from the menu
+    // MODIFIES: this
+    // EFFECTS: adds the point to the team
     private void matchPoints(int input) {
         match.addPoint(input);
     }
 
+    // EFFECTS: initializes a new match
     private void newMatch() {
         match = new Match();
     }
 
+    // REQURIES:
+    // EFFECTS: determines if its doubles or singles based off user commands
     private void startMatch() {
         System.out.println("singles or doubles?");
         String type = input.next();
-
         if (type.equals("doubles")) {
             chooseDoubles();
         } else if (type.equals("singles")) {
@@ -170,15 +185,16 @@ public class BadmintonApp {
         }
     }
 
+    // EFFECTS: initializes a double games player selection
     private void chooseDoubles() {
         newMatch();
-        ArrayList<String> avaliablePlayers = list.listOfPlayerNames();
+        ArrayList<String> avaliablePlayers = listOfPlayer.listOfPlayerNames();
         for (int i = 0; i < 2; ++i) {
             System.out.println("Select players for team A");
             System.out.println("Available players:");
             System.out.println(avaliablePlayers);
             String player = input.next();
-            match.addPlayersTeamA(list.getPlayer(player));
+            match.addPlayersTeamA(listOfPlayer.getPlayer(player));
             avaliablePlayers.remove(avaliablePlayers.indexOf(player));
         }
         for (int i = 0; i < 2; ++i) {
@@ -186,25 +202,26 @@ public class BadmintonApp {
             System.out.println("Available players:");
             System.out.println(avaliablePlayers);
             String player = input.next();
-            match.addPlayersTeamB(list.getPlayer(player));
+            match.addPlayersTeamB(listOfPlayer.getPlayer(player));
             avaliablePlayers.remove(avaliablePlayers.indexOf(player));
         }
     }
 
+    // EFFECTS: initializes a singles games player selection
     private void chooseSingles() {
         newMatch();
-        ArrayList<String> avaliablePlayers = list.listOfPlayerNames();
+        ArrayList<String> avaliablePlayers = listOfPlayer.listOfPlayerNames();
         System.out.println("Select players for team A");
         System.out.println("Available players:");
         System.out.println(avaliablePlayers);
         String player = input.next();
-        match.addPlayersTeamA(list.getPlayer(player));
+        match.addPlayersTeamA(listOfPlayer.getPlayer(player));
         avaliablePlayers.remove(avaliablePlayers.indexOf(player));
         System.out.println("Select players for team B");
         System.out.println("Available players:");
         System.out.println(avaliablePlayers);
         player = input.next();
-        match.addPlayersTeamB(list.getPlayer(player));
+        match.addPlayersTeamB(listOfPlayer.getPlayer(player));
         avaliablePlayers.remove(avaliablePlayers.indexOf(player));
     }
 }

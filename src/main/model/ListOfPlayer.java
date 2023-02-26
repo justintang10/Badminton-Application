@@ -2,44 +2,58 @@ package model;
 
 import java.util.ArrayList;
 
+// ListOfPLayer represents the list of players that are in the current session
 public class ListOfPlayer {
-    private ArrayList<Player> players;
+    private ArrayList<Player> listOfPlayers; // List of players that are in the session
 
+    // EFFECTS: creates an empty list of player
     public ListOfPlayer() {
-        players = new ArrayList<Player>();
+        listOfPlayers = new ArrayList<Player>();
     }
 
-    public void addPlayerByName(String name) {
-        players.add(new Player(name));
+    // REQUIRES: name has a non-zero length
+    // MODIFIES: this
+    // EFFECTS: creates a new player with name set to playerName and adds it to listOfPlayers
+    public void addPlayerByName(String playerName) {
+        listOfPlayers.add(new Player(playerName));
     }
 
+    // REQUIRES: player
+    // MODIFIES: this
+    // EFFECTS: adds player to listOfPlayers
     public void addPlayer(Player player) {
-        players.add(player);
+        listOfPlayers.add(player);
     }
 
+
+    // EFFECTS: Creates of a list of player names from listOfPlayers
     public ArrayList<String> listOfPlayerNames() {
         ArrayList<String> aval = new ArrayList<String>();
-        for (Player player : players) {
+        for (Player player : listOfPlayers) {
             aval.add(player.getName());
         }
         return aval;
     }
 
-    public int getPlayerIndex(String name) {
+    // REQUIRES: name has a non-zero length and is a player inside listOfPLayers
+    // EFFECTS: returns the position of the player with name that equals playerName
+    public int getPlayerIndex(String playerName) {
         int position = -1;
-        for (Player player : players) {
-            if (player.getName().equals(name)) {
-                position = players.indexOf(player);
+        for (Player player : listOfPlayers) {
+            if (player.getName().equals(playerName)) {
+                position = listOfPlayers.indexOf(player);
             }
         }
         return position;
     }
 
-    public Player getPlayer(String name) {
-        return players.get(getPlayerIndex(name));
+    // REQUIRES: name has a non-zero length and is a player inside listOfPLayers
+    // EFFECTS: returns the player object with name that equals playerName
+    public Player getPlayer(String playerName) {
+        return listOfPlayers.get(getPlayerIndex(playerName));
     }
 
     public int getSize() {
-        return players.size();
+        return listOfPlayers.size();
     }
 }

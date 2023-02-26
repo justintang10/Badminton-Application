@@ -1,14 +1,18 @@
 package model;
 
-import java.util.ArrayList;
-
+// Represents a Player having a name, wins, and losses
 public class Player {
-    private String name;
-    private int wins;
-    private int loss;
+    private String name; // Player name
+    private int wins; // Tracks player wins
+    private int loss; // Tracks player losses
 
-    public Player(String name) {
-        this.name = name;
+    /*
+     * REQUIRES: name has a non-zero length
+     * EFFECTS: name on Player is set to playerName; wins and loss are
+     * set to zero
+     */
+    public Player(String playerName) {
+        this.name = playerName;
         wins = 0;
         loss = 0;
     }
