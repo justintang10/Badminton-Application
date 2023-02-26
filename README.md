@@ -15,4 +15,4 @@ I love the sport of badminton and am that person that always forget who is servi
 - As a user, I want to be able to add players(X) to the current session that is being played(Y)
 - As a user, I want to be able to see the amount of players in the session
 - As a user, I want to be able to keep track of scoring for the match
-- As a user, I want to be able to see a players games played and their win loss ratio
+- As a user, I want to be able to see a players wins and losses

@@ -14,11 +14,6 @@ public class ListOfPlayer {
         players.add(new Player(name));
     }
 
-    public void getPlayers() {
-        for (Player player : players) {
-            System.out.println(player.getName());
-        }
-    }
 
     public ArrayList<String> listOfPlayerNames() {
         ArrayList<String> aval = new ArrayList<String>();
@@ -34,7 +29,8 @@ public class ListOfPlayer {
             if (player.getName().equals(name)) {
                 position = players.indexOf(player);
             }
-        } return position;
+        }
+        return position;
     }
 
     public Player getPlayer(String name) {

@@ -15,15 +15,15 @@ public class Player {
         loss = 0;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getWins(){
+    public int getWins() {
         return wins;
     }
 
-    public int getLoss(){
+    public int getLoss() {
         return loss;
     }
 
@@ -31,11 +31,11 @@ public class Player {
         return gamesPlayedIn;
     }
 
-    public void addWins(){
+    public void addWins() {
         wins++;
     }
 
-    public void addLoss(){
+    public void addLoss() {
         loss++;
     }
 }

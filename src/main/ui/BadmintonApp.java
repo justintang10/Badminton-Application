@@ -81,12 +81,12 @@ public class BadmintonApp {
     }
 
     private void getPlayersInSession() {
-        list.getPlayers();
+        System.out.println(list.listOfPlayerNames());
     }
 
     private void getStats() {
         System.out.println("Which player?");
-        list.getPlayers();
+        System.out.println(list.listOfPlayerNames());
         String name = input.next();
         int index = list.getPlayerIndex(name);
         if (index != -1) {
@@ -110,22 +110,31 @@ public class BadmintonApp {
             command = input.next();
             command = command.toLowerCase();
 
-            if (command.equals("q")) {
+            if (command.equals("e")) {
                 keepGoing = false;
             } else {
                 processMatchCommand(command);
-                System.out.println("Score: ");
-                System.out.println(match.getTeamAPoints());
-                System.out.println(match.getTeamBPoints());
+                printScore();
+                if (match.checkIfGameIsOver()) {
+                    keepGoing = false;
+                }
             }
         }
-
-        System.out.println("\nGoodbye!");
+        match.winLoss();
+        System.out.println("\nEnd of Game!");
+        System.out.println("\nThe winner is " + match.getMatchWinner());
     }
 
-    private void matchMenu(){
+    private void printScore() {
+        System.out.println("Score: ");
+        System.out.println("Team A: " + match.getTeamAPoints());
+        System.out.println("Team B: " + match.getTeamBPoints());
+    }
+
+    private void matchMenu() {
         System.out.println("1 -> point for team A");
         System.out.println("2 -> point for team B");
+        System.out.println("e -> end match");
     }
 
     // MODIFIES: this
@@ -154,17 +163,17 @@ public class BadmintonApp {
 
         if (type.equals("doubles")) {
             chooseDoubles();
-        } if(type.equals("singles")){
+        } else if (type.equals("singles")) {
             chooseSingles();
         } else {
             System.out.println("Invalid type");
         }
     }
 
-    private void chooseDoubles(){
+    private void chooseDoubles() {
         newMatch();
         ArrayList<String> avaliablePlayers = list.listOfPlayerNames();
-        for(int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 2; ++i) {
             System.out.println("Select players for team A");
             System.out.println("Available players:");
             System.out.println(avaliablePlayers);
@@ -172,7 +181,7 @@ public class BadmintonApp {
             match.addPlayersTeamA(list.getPlayer(player));
             avaliablePlayers.remove(avaliablePlayers.indexOf(player));
         }
-        for(int i = 0; i < 2; ++i) {
+        for (int i = 0; i < 2; ++i) {
             System.out.println("Select players for team B");
             System.out.println("Available players:");
             System.out.println(avaliablePlayers);
@@ -182,7 +191,7 @@ public class BadmintonApp {
         }
     }
 
-    private void chooseSingles(){
+    private void chooseSingles() {
         newMatch();
         ArrayList<String> avaliablePlayers = list.listOfPlayerNames();
         System.out.println("Select players for team A");
