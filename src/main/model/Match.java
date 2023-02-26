@@ -50,19 +50,19 @@ public class Match {
     public void addPoint(int input) {
         if (input == 1) {
             pointsTeamA.set(game, (pointsTeamA.get(game) + 1));
-            if (nextround()) {
+            if (nextRound()) {
                 game++;
             }
         }
         if (input == 2) {
             pointsTeamB.set(game, (pointsTeamB.get(game) + 1));
-            if (nextround()) {
+            if (nextRound()) {
                 game++;
             }
         }
     }
 
-    public boolean nextround() {
+    public boolean nextRound() {
         if ((pointsTeamA.get(game) >= deuces && pointsTeamB.get(game) >= deuces)
                 && ((pointsTeamA.get(game) - (pointsTeamB.get(game)) == 2)
                 || (pointsTeamB.get(game) - (pointsTeamA.get(game)) == 2))) {

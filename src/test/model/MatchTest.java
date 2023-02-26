@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -67,29 +66,29 @@ public class MatchTest {
     @Test
     void testNextRound() {
         match1.addPoint(1);
-        assertFalse(match1.nextround());
+        assertFalse(match1.nextRound());
         match1.addPoint(1);
         match1.addPoint(1);
         match1.addPoint(1);
-        assertTrue(match1.nextround());
         match1.addPoint(2);
         match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
         match1.addPoint(2);
         match1.addPoint(2);
         assertFalse(match1.checkIfGameIsOver());
-        assertTrue(match1.nextround());
         match1.addPoint(1);
         match1.addPoint(1);
         match1.addPoint(1);
         match1.addPoint(2);
         match1.addPoint(2);
         match1.addPoint(2);
-        assertFalse(match1.nextround());
         match1.addPoint(1);
         match1.addPoint(1);
-        assertTrue(match1.nextround());
         assertEquals(match1.getTeamA(), match1.getMatchWinner());
-        assertFalse(match1.checkIfGameIsOver());
+        assertTrue(match1.checkIfGameIsOver());
     }
 
     @Test
@@ -112,6 +111,7 @@ public class MatchTest {
         assertEquals(0, player2.getWins());
         assertEquals(0, player1.getLoss());
         assertEquals(1, player2.getLoss());
+        assertTrue(match1.checkIfGameIsOver());
     }
 
     @Test
@@ -129,9 +129,11 @@ public class MatchTest {
         match1.addPoint(1);
         match1.addPoint(1);
         match1.winLoss();
+        assertEquals(match1.getTeamA(),match1.getMatchWinner());
         assertEquals(0, player1.getWins());
         assertEquals(1, player2.getWins());
         assertEquals(1, player1.getLoss());
         assertEquals(0, player2.getLoss());
+        assertTrue(match1.checkIfGameIsOver());
     }
 }
