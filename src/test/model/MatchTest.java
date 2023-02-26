@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,8 +24,11 @@ public class MatchTest {
         Player player1 = new Player("justin");
         Player player2 = new Player("tang");
         Player player3 = new Player("dog");
+        ArrayList<Player> test = new ArrayList<>();
+        test.add(player1);
         match1.addPlayersTeamA(player1);
         assertEquals(1, match1.getTeamASize());
+        assertEquals(test, match1.getTeamA());
         match1.addPlayersTeamB(player2);
         assertEquals(1, match1.getTeamBSize());
         match1.addPlayersTeamA(player3);
@@ -39,20 +43,24 @@ public class MatchTest {
         assertEquals(Arrays.asList(0, 1, 0, 0), match1.getTeamBPoints());
         match1.addPoint(1);
         match1.addPoint(1);
-        assertEquals(Arrays.asList(1, 3, 0, 0), match1.getTeamAPoints());
+        match1.addPoint(1);
+        assertEquals(Arrays.asList(1, 4, 0, 0), match1.getTeamAPoints());
         match1.addPoint(2);
         match1.addPoint(2);
         match1.addPoint(2);
-        assertEquals(Arrays.asList(1, 0, 3, 0), match1.getTeamBPoints());
+        match1.addPoint(2);
+        assertEquals(Arrays.asList(1, 1, 4, 0), match1.getTeamBPoints());
         match1.addPoint(1);
         match1.addPoint(2);
         match1.addPoint(1);
+        match1.addPoint(1);
         match1.addPoint(2);
-        assertEquals(Arrays.asList(1, 3, 0, 2), match1.getTeamAPoints());
-        assertEquals(Arrays.asList(1, 0, 3, 2), match1.getTeamBPoints());
+        match1.addPoint(2);
+        assertEquals(Arrays.asList(1, 4, 0, 3), match1.getTeamAPoints());
+        assertEquals(Arrays.asList(1, 1, 4, 3), match1.getTeamBPoints());
         match1.addPoint(1);
         match1.addPoint(1);
-        assertEquals(Arrays.asList(2, 3, 0, 4), match1.getTeamAPoints());
+        assertEquals(Arrays.asList(2, 4, 0, 5), match1.getTeamAPoints());
     }
 
     @SuppressWarnings("methodlength")
@@ -62,7 +70,9 @@ public class MatchTest {
         assertFalse(match1.nextround());
         match1.addPoint(1);
         match1.addPoint(1);
+        match1.addPoint(1);
         assertTrue(match1.nextround());
+        match1.addPoint(2);
         match1.addPoint(2);
         match1.addPoint(2);
         match1.addPoint(2);
@@ -70,6 +80,8 @@ public class MatchTest {
         assertTrue(match1.nextround());
         match1.addPoint(1);
         match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(2);
         match1.addPoint(2);
         match1.addPoint(2);
         assertFalse(match1.nextround());
@@ -77,6 +89,49 @@ public class MatchTest {
         match1.addPoint(1);
         assertTrue(match1.nextround());
         assertEquals(match1.getTeamA(), match1.getMatchWinner());
-        assertTrue(match1.checkIfGameIsOver());
+        assertFalse(match1.checkIfGameIsOver());
+    }
+
+    @Test
+    void teamBWin() {
+        Player player1 = new Player("justin");
+        Player player2 = new Player("tang");
+        match1.addPlayersTeamB(player1);
+        match1.addPlayersTeamA(player2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        assertEquals(match1.getTeamB(),match1.getMatchWinner());
+        match1.winLoss();
+        assertEquals(1, player1.getWins());
+        assertEquals(0, player2.getWins());
+        assertEquals(0, player1.getLoss());
+        assertEquals(1, player2.getLoss());
+    }
+
+    @Test
+    void teamAWin() {
+        Player player1 = new Player("justin");
+        Player player2 = new Player("tang");
+        match1.addPlayersTeamA(player2);
+        match1.addPlayersTeamB(player1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.addPoint(1);
+        match1.winLoss();
+        assertEquals(0, player1.getWins());
+        assertEquals(1, player2.getWins());
+        assertEquals(1, player1.getLoss());
+        assertEquals(0, player2.getLoss());
     }
 }

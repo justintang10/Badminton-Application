@@ -14,7 +14,7 @@ public class Match {
     private final int deuces;
 
     public Match() {
-        winningPoint = 3;
+        winningPoint = 4;
         deuces = winningPoint - 1;
         game = 1;
         pointsTeamA = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
@@ -43,6 +43,9 @@ public class Match {
         return teamA;
     }
 
+    public ArrayList<Player> getTeamB() {
+        return teamB;
+    }
 
     public void addPoint(int input) {
         if (input == 1) {
@@ -100,7 +103,7 @@ public class Match {
             for (Player player : teamB) {
                 player.addWins();
             }
-            for (Player player : teamB) {
+            for (Player player : teamA) {
                 player.addLoss();
             }
         }
