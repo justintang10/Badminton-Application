@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 public class Match {
     private static int nextMatchID = 1; // tracks id of next match created
-    private int id; // match id
     private int game;
     private ArrayList<Integer> pointsTeamA;
     private ArrayList<Integer> pointsTeamB;
@@ -17,7 +16,6 @@ public class Match {
     public Match() {
         winningPoint = 3;
         deuces = winningPoint - 1;
-        id = nextMatchID++;
         game = 1;
         pointsTeamA = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
         pointsTeamB = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
@@ -40,9 +38,6 @@ public class Match {
         return teamA;
     }
 
-    public ArrayList<Player> getTeamB() {
-        return teamB;
-    }
 
     public void addPoint(int input) {
         if (input == 1) {
