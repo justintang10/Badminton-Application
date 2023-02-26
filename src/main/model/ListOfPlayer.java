@@ -1,6 +1,5 @@
 package model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ListOfPlayer {
@@ -10,10 +9,13 @@ public class ListOfPlayer {
         players = new ArrayList<Player>();
     }
 
-    public void add(String name) {
+    public void addPlayerByName(String name) {
         players.add(new Player(name));
     }
 
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
 
     public ArrayList<String> listOfPlayerNames() {
         ArrayList<String> aval = new ArrayList<String>();
@@ -35,5 +37,9 @@ public class ListOfPlayer {
 
     public Player getPlayer(String name) {
         return players.get(getPlayerIndex(name));
+    }
+
+    public int getSize() {
+        return players.size();
     }
 }

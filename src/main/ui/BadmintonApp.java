@@ -77,7 +77,7 @@ public class BadmintonApp {
     private void addPlayer() {
         System.out.println("Enter name of player");
         String name = input.next();
-        list.add(name);
+        list.addPlayerByName(name);
     }
 
     private void getPlayersInSession() {

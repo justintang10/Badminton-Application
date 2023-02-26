@@ -12,9 +12,11 @@ public class Match {
     private ArrayList<Player> teamA;
     private ArrayList<Player> teamB;
     private final int winningPoint;
+    private final int deuces;
 
     public Match() {
-        winningPoint = 5;
+        winningPoint = 3;
+        deuces = winningPoint - 1;
         id = nextMatchID++;
         game = 1;
         pointsTeamA = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
@@ -22,6 +24,9 @@ public class Match {
         teamA = new ArrayList<>();
         teamB = new ArrayList<>();
     }
+    public int getTeamASize() {return teamA.size();}
+
+    public int getTeamBSize() {return teamB.size();}
 
     public void addPlayersTeamA(Player player) {
         teamA.add(player);
@@ -29,6 +34,14 @@ public class Match {
 
     public void addPlayersTeamB(Player player) {
         teamB.add(player);
+    }
+
+    public ArrayList<Player> getTeamA() {
+        return teamA;
+    }
+
+    public ArrayList<Player> getTeamB() {
+        return teamB;
     }
 
     public void addPoint(int input) {
@@ -47,12 +60,12 @@ public class Match {
     }
 
     public boolean nextround() {
-        if ((pointsTeamA.get(game) >= 20 && pointsTeamB.get(game) >= 20)
+        if ((pointsTeamA.get(game) >= deuces && pointsTeamB.get(game) >= deuces)
                 && ((pointsTeamA.get(game) - (pointsTeamB.get(game)) == 2)
                 || (pointsTeamB.get(game) - (pointsTeamA.get(game)) == 2))) {
             winnerGame();
             return true;
-        } else if ((pointsTeamA.get(game) >= 20 && pointsTeamB.get(game) >= 20)
+        } else if ((pointsTeamA.get(game) >= deuces && pointsTeamB.get(game) >= deuces)
                 && ((pointsTeamA.get(game) - (pointsTeamB.get(game)) != 2)
                         || (pointsTeamB.get(game) - (pointsTeamA.get(game)) != 2))) {
             return false;
