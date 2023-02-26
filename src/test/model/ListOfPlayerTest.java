@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ListOfPlayerTest {
 
@@ -58,10 +58,8 @@ class ListOfPlayerTest {
     void testGetSize() {
         listOfPlayer.addPlayerByName("a");
         listOfPlayer.addPlayerByName("b");
-        assertEquals(2,listOfPlayer.getSize());
+        assertEquals(2, listOfPlayer.getSize());
     }
-
-
 
 
 }

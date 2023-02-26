@@ -22,9 +22,14 @@ public class Match {
         teamA = new ArrayList<>();
         teamB = new ArrayList<>();
     }
-    public int getTeamASize() {return teamA.size();}
 
-    public int getTeamBSize() {return teamB.size();}
+    public int getTeamASize() {
+        return teamA.size();
+    }
+
+    public int getTeamBSize() {
+        return teamB.size();
+    }
 
     public void addPlayersTeamA(Player player) {
         teamA.add(player);
@@ -62,7 +67,7 @@ public class Match {
             return true;
         } else if ((pointsTeamA.get(game) >= deuces && pointsTeamB.get(game) >= deuces)
                 && ((pointsTeamA.get(game) - (pointsTeamB.get(game)) != 2)
-                        || (pointsTeamB.get(game) - (pointsTeamA.get(game)) != 2))) {
+                || (pointsTeamB.get(game) - (pointsTeamA.get(game)) != 2))) {
             return false;
         } else if (pointsTeamB.get(game) == winningPoint) {
             pointsTeamB.set(0, (pointsTeamB.get(0) + 1));
