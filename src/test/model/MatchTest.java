@@ -126,6 +126,10 @@ public class MatchTest {
         match1.addPoint(1);
         match1.addPoint(1);
         match1.addPoint(1);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(2);
+        match1.addPoint(1);
         match1.addPoint(1);
         match1.winLoss();
         assertEquals(match1.getTeamA(),match1.getMatchWinner());
