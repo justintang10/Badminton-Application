@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 // ListOfPLayer represents the list of players that are in the current session
 public class ListOfPlayer implements Writable {
@@ -59,6 +61,11 @@ public class ListOfPlayer implements Writable {
 
     public int getSize() {
         return listOfPlayers.size();
+    }
+
+    // EFFECTS: returns an unmodifiable list of thingies in this workroom
+    public List<Player> getListOfPlayers() {
+        return Collections.unmodifiableList(listOfPlayers);
     }
 
     @Override

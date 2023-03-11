@@ -15,7 +15,7 @@ import java.util.Scanner;
 // starts the main app loop, asks for user input when required, and prints the app objects onto the console
 
 public class BadmintonAppConsole {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/badmintonplayers.json";
     private Scanner input;
     private ListOfPlayer listOfPlayer;
     private Match match;
