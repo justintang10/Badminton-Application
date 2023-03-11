@@ -3,7 +3,11 @@ package ui;
 import model.ListOfPlayer;
 import model.Match;
 import model.Player;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,12 +15,18 @@ import java.util.Scanner;
 // starts the main app loop, asks for user input when required, and prints the app objects onto the console
 
 public class BadmintonAppConsole {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Scanner input;
     private ListOfPlayer listOfPlayer;
     private Match match;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     // EFFECTS: runs the badmintton application
-    public BadmintonAppConsole() {
+    public BadmintonAppConsole() throws FileNotFoundException {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runBadmintonApp();
     }
 
@@ -25,9 +35,7 @@ public class BadmintonAppConsole {
     private void runBadmintonApp() {
         boolean keepGoing = true;
         String command = null;
-
         init();
-
         while (keepGoing) {
             displayMenu();
             command = input.next();
@@ -48,8 +56,10 @@ public class BadmintonAppConsole {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add players");
         System.out.println("\tg -> get players");
-        System.out.println("\ts -> get player stat");
+        System.out.println("\tw -> get player stat");
         System.out.println("\tb -> start match");
+        System.out.println("\ts -> save work room to file");
+        System.out.println("\tl -> load work room from file");
         System.out.println("\tq -> quit");
     }
 
@@ -60,10 +70,14 @@ public class BadmintonAppConsole {
             addPlayer();
         } else if (command.equals("g")) {
             getPlayersInSession();
-        } else if (command.equals("s")) {
+        } else if (command.equals("w")) {
             getStats();
         } else if (command.equals("b")) {
             runMatch();
+        } else if (command.equals("s")) {
+            saveListOfPlayer();
+        } else if (command.equals("l")) {
+            loadListOfPlayer();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -223,5 +237,28 @@ public class BadmintonAppConsole {
         player = input.next();
         match.addPlayersTeamB(listOfPlayer.getPlayer(player));
         avaliablePlayers.remove(avaliablePlayers.indexOf(player));
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveListOfPlayer() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(listOfPlayer);
+            jsonWriter.close();
+            System.out.println("Saved " + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadListOfPlayer() {
+        try {
+            listOfPlayer = jsonReader.read();
+            System.out.println("Loaded " +  " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 }

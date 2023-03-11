@@ -20,9 +20,9 @@ public class MatchTest {
 
     @Test
     void testAddPlayersTeamA() {
-        Player player1 = new Player("justin");
-        Player player2 = new Player("tang");
-        Player player3 = new Player("dog");
+        Player player1 = new Player("justin", 0, 0);
+        Player player2 = new Player("tang", 0,0);
+        Player player3 = new Player("dog", 0, 0);
         ArrayList<Player> test = new ArrayList<>();
         test.add(player1);
         match1.addPlayersTeamA(player1);
@@ -92,8 +92,8 @@ public class MatchTest {
 
     @Test
     void teamBWin() {
-        Player player1 = new Player("justin");
-        Player player2 = new Player("tang");
+        Player player1 = new Player("justin", 0, 0);
+        Player player2 = new Player("tang", 0, 0);
         match1.addPlayersTeamB(player1);
         match1.addPlayersTeamA(player2);
         match1.addPoint(2);
@@ -115,8 +115,8 @@ public class MatchTest {
 
     @Test
     void teamAWin() {
-        Player player1 = new Player("justin");
-        Player player2 = new Player("tang");
+        Player player1 = new Player("justin", 0, 0);
+        Player player2 = new Player("tang", 0, 0);
         match1.addPlayersTeamA(player2);
         match1.addPlayersTeamB(player1);
         match1.addPoint(1);
@@ -142,8 +142,8 @@ public class MatchTest {
 
     @Test
     void testDueces() {
-        Player player1 = new Player("justin");
-        Player player2 = new Player("tang");
+        Player player1 = new Player("justin", 0, 0);
+        Player player2 = new Player("tang", 0, 0);
         match1.addPlayersTeamA(player1);
         match1.addPlayersTeamB(player2);
         match1.addPoint(1);

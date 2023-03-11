@@ -46,8 +46,8 @@ class ListOfPlayerTest {
 
     @Test
     void testGetPlayer() {
-        Player player1 = new Player("justin");
-        Player player2 = new Player("tang");
+        Player player1 = new Player("justin", 0, 0);
+        Player player2 = new Player("tang", 0,0);
         listOfPlayer.addPlayer(player1);
         listOfPlayer.addPlayer(player2);
         assertEquals(player1, listOfPlayer.getPlayer("justin"));

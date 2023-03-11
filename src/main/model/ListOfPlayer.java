@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // ListOfPLayer represents the list of players that are in the current session
-public class ListOfPlayer {
+public class ListOfPlayer implements Writable {
     private ArrayList<Player> listOfPlayers; // List of players that are in the session
 
     // EFFECTS: creates an empty list of player
@@ -15,7 +19,7 @@ public class ListOfPlayer {
     // MODIFIES: this
     // EFFECTS: creates a new player with name set to playerName and adds it to listOfPlayers
     public void addPlayerByName(String playerName) {
-        listOfPlayers.add(new Player(playerName));
+        listOfPlayers.add(new Player(playerName, 0, 0));
     }
 
     // REQUIRES: player
@@ -55,5 +59,23 @@ public class ListOfPlayer {
 
     public int getSize() {
         return listOfPlayers.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("listOfPlayers", thingiesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray thingiesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Player p : listOfPlayers) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 }

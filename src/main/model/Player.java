@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a Player having a name, wins, and losses
-public class Player {
+public class Player implements Writable {
     private String name; // Player name
     private int wins; // Tracks player wins
     private int loss; // Tracks player losses
@@ -11,10 +14,10 @@ public class Player {
      * EFFECTS: name on Player is set to playerName; wins and loss are
      * set to zero
      */
-    public Player(String playerName) {
+    public Player(String playerName, int wins, int loss) {
         this.name = playerName;
-        wins = 0;
-        loss = 0;
+        this.wins = wins;
+        this.loss = loss;
     }
 
     public String getName() {
@@ -35,5 +38,14 @@ public class Player {
 
     public void addLoss() {
         loss++;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("wins", wins);
+        json.put("loss", loss);
+        return json;
     }
 }

@@ -16,3 +16,7 @@ I love the sport of badminton and am that person that always forget who is servi
 - As a user, I want to be able to see the amount of players in the session
 - As a user, I want to be able to keep track of scoring for the match
 - As a user, I want to be able to see a players wins and losses
+- As a user I want to save the list of players that are in the current session 
+  along with their wins and losses
+- As a user, when I start the application, I want to be given the option to load the list of players 
+  from previous session
