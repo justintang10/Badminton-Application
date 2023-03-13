@@ -239,7 +239,7 @@ public class BadmintonAppConsole {
         avaliablePlayers.remove(avaliablePlayers.indexOf(player));
     }
 
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves the ListOfPlayer to file
     private void saveListOfPlayer() {
         try {
             jsonWriter.open();
@@ -252,7 +252,7 @@ public class BadmintonAppConsole {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads ListOfPlayer from file
     private void loadListOfPlayer() {
         try {
             listOfPlayer = jsonReader.read();

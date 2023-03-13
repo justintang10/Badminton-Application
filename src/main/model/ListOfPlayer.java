@@ -75,7 +75,7 @@ public class ListOfPlayer implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this ListOfPlayer as a JSON array
     private JSONArray thingiesToJson() {
         JSONArray jsonArray = new JSONArray();
 

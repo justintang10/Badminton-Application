@@ -20,7 +20,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads ListOfPlayer from file and returns it;
     // throws IOException if an error occurs reading data from file
     public ListOfPlayer read() throws IOException {
         String jsonData = readFile(source);
@@ -39,15 +39,15 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses ListOfPlayer from JSON object and returns it
     private ListOfPlayer parseListOfPlayer(JSONObject jsonObject) {
         ListOfPlayer lp = new ListOfPlayer();
         addPlayers(lp, jsonObject);
         return lp;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: lp
+    // EFFECTS: parses listofplayer from JSON object and adds them to ListOfPlayer
     private void addPlayers(ListOfPlayer lp, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("listOfPlayers");
         for (Object json : jsonArray) {
@@ -56,8 +56,8 @@ public class JsonReader {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: lp
+    // EFFECTS: parses Player from JSON object and adds it to ListOfPlayer
     private void addPlayer(ListOfPlayer lp, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int wins = jsonObject.getInt("wins");
