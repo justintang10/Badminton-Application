@@ -54,6 +54,7 @@ public class GUI extends JFrame {
         });
     }
 
+    // test
     public void loadButton() {
         buttonLoad.addActionListener(new ActionListener() {
             @Override
