@@ -1,7 +1,6 @@
 package ui;
 
 import model.ListOfPlayer;
-import model.Match;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -35,14 +34,27 @@ public class GUI extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
+        addButton();
+        loadButton();
+        saveButton();
+        showPlayerButton();
+
+
+        ImageIcon image = new ImageIcon("/Users/justin/IdeaProjects/project_i0q5c/picture/badminton_cross.png");
+        pictureLabel.setIcon(image);
+    }
+
+    public void addButton() {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    String firstname = textFieldName.getText();
-                    listOfPlayer.addPlayerByName(firstname);
+                String firstname = textFieldName.getText();
+                listOfPlayer.addPlayerByName(firstname);
             }
         });
+    }
 
+    public void loadButton() {
         buttonLoad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +66,9 @@ public class GUI extends JFrame {
                 }
             }
         });
+    }
 
+    public void saveButton() {
         buttonSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,23 +82,21 @@ public class GUI extends JFrame {
                 }
             }
         });
+    }
 
+    public void showPlayerButton() {
         buttonShowPlayers.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StringBuilder joined = new StringBuilder();
-                for (String name: listOfPlayer.listOfPlayerNames()) {
+                for (String name : listOfPlayer.listOfPlayerNames()) {
                     joined.append(name + ", ");
                 }
                 labelPlayers.setText(String.valueOf(joined));
             }
         });
-
-       ImageIcon image = new ImageIcon("/Users/justin/IdeaProjects/project_i0q5c/picture/badminton_cross.png");
-        pictureLabel.setIcon(image);
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
+
+
 }
