@@ -1,22 +1,12 @@
 {"listOfPlayers": [
     {
         "wins": 0,
-        "loss": 1,
+        "loss": 0,
         "name": "justin"
     },
     {
-        "wins": 1,
-        "loss": 0,
-        "name": "san"
-    },
-    {
-        "wins": 1,
-        "loss": 0,
-        "name": "aman"
-    },
-    {
         "wins": 0,
-        "loss": 1,
-        "name": "dog"
+        "loss": 0,
+        "name": "chloe"
     }
 ]}
