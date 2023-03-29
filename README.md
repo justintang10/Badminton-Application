@@ -20,3 +20,11 @@ I love the sport of badminton and am that person that always forget who is servi
   along with their wins and losses
 - As a user, when I start the application, I want to be given the option to load the list of players 
   from previous session
+
+## Instructions for Grader
+- You can generate the first required action related to add Xs to a Y by type the name of the player into the text field and clicking the add button 
+- You can generate the second required action related showing the Xs in the Y by clicking the show player button
+- You can locate my visual component at the top middle of the GUI
+- You can save the state of my application by clicking the save button
+- You can reload the state of my application by clicking the load button
+
