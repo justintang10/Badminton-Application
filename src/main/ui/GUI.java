@@ -22,6 +22,7 @@ public class GUI extends JFrame {
     private JButton buttonLoad;
     private JLabel labelPlayers;
     private JLabel pictureLabel;
+    private JButton buttonRemove;
     private static final String JSON_STORE = "./data/badmintonplayers.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -39,6 +40,7 @@ public class GUI extends JFrame {
         jsonReader = new JsonReader(JSON_STORE);
 
         addButton();
+        removeButton();
         loadButton();
         saveButton();
         showPlayerButton();
@@ -105,6 +107,16 @@ public class GUI extends JFrame {
                     joined.append(name + ", ");
                 }
                 labelPlayers.setText(String.valueOf(joined));
+            }
+        });
+    }
+
+    public void removeButton() {
+        buttonRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String firstname = textFieldName.getText();
+                listOfPlayer.removePlayerByName(firstname);
             }
         });
     }

@@ -17,10 +17,16 @@ class ListOfPlayerTest {
     }
 
     @Test
-    void testAdd() {
+    void testAddAndRemove() {
         listOfPlayer.addPlayerByName("k");
         listOfPlayer.addPlayerByName("m");
         assertEquals(2, listOfPlayer.getSize());
+        listOfPlayer.removePlayerByName("m");
+        assertEquals(1,listOfPlayer.getSize());
+        ArrayList<String> test = new ArrayList<>();
+        test.add("k");
+        assertEquals(test, listOfPlayer.listOfPlayerNames());
+
     }
 
     @Test

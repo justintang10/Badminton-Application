@@ -31,6 +31,12 @@ public class ListOfPlayer implements Writable {
         listOfPlayers.add(player);
     }
 
+    // REQUIRES: player
+    // MODIFIES: this
+    // EFFECTS: removes player to listOfPlayers
+    public void removePlayerByName(String playerName) {
+        listOfPlayers.remove(getPlayer(playerName));
+    }
 
     // EFFECTS: Creates of a list of player names from listOfPlayers
     public ArrayList<String> listOfPlayerNames() {
