@@ -23,7 +23,7 @@ public class BadmintonAppConsole {
     private JsonReader jsonReader;
 
 
-    // EFFECTS: runs the badmintton application
+    // EFFECTS: runs the badminton application
     public BadmintonAppConsole() throws FileNotFoundException {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);

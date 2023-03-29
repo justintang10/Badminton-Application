@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// GUI class is the graphic user interface of the Badminton app
+// creates the interface with the buttons and fields needed to execute user stories
+
 public class GUI extends JFrame {
     private JPanel mainPanel;
     private JTextField textFieldName;
@@ -24,6 +27,7 @@ public class GUI extends JFrame {
     private JsonReader jsonReader;
     private ListOfPlayer listOfPlayer = new ListOfPlayer();
 
+    // EFFECTS: creates the GUI with the mainPanel, text fields, buttons, picture, and initializes JSON components.
     public GUI() throws FileNotFoundException {
         setContentPane(mainPanel);
         setTitle("Badminton App");
@@ -44,6 +48,8 @@ public class GUI extends JFrame {
         pictureLabel.setIcon(image);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates Action Listener to addButton and creates and adds player to listOfPlayer
     public void addButton() {
         addButton.addActionListener(new ActionListener() {
             @Override
@@ -54,7 +60,8 @@ public class GUI extends JFrame {
         });
     }
 
-    // test save two
+    // MODIFIES: this
+    // EFFECTS: creates Action Listener to loadButton and loads listOfPLayer from file when pressed
     public void loadButton() {
         buttonLoad.addActionListener(new ActionListener() {
             @Override
@@ -69,6 +76,8 @@ public class GUI extends JFrame {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates Action Listener to saveButton and saves listOfPLayer to file when pressed
     public void saveButton() {
         buttonSave.addActionListener(new ActionListener() {
             @Override
@@ -85,6 +94,8 @@ public class GUI extends JFrame {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates Action Listener to showPlayerButton and shows listOfPlayer
     public void showPlayerButton() {
         buttonShowPlayers.addActionListener(new ActionListener() {
             @Override
