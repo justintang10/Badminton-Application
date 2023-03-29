@@ -111,6 +111,8 @@ public class GUI extends JFrame {
         });
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates Action Listener to removeButton and removes Player from listOfPlayer
     public void removeButton() {
         buttonRemove.addActionListener(new ActionListener() {
             @Override

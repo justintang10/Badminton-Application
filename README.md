@@ -23,7 +23,7 @@ I love the sport of badminton and am that person that always forget who is servi
 
 ## Instructions for Grader
 - You can generate the first required action related to add Xs to a Y by typing the name of the player into the text field and clicking the add button 
-- You can generate the second required action related to removing the Xs in the Y by typing the name of the player into the text field and clicking the remove button
+- You can generate the second required action related to removing a X in the Y by typing the name of the player into the text field and clicking the remove button
 - You can locate my visual component at the top middle of the GUI
 - You can save the state of my application by clicking the save button
 - You can reload the state of my application by clicking the load button
