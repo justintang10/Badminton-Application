@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.ListOfPlayer;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -28,6 +30,7 @@ public class GUI extends JFrame {
     private JsonReader jsonReader;
     private ListOfPlayer listOfPlayer = new ListOfPlayer();
 
+
     // EFFECTS: creates the GUI with the mainPanel, text fields, buttons, picture, and initializes JSON components.
     public GUI() throws FileNotFoundException {
         setContentPane(mainPanel);
@@ -44,10 +47,22 @@ public class GUI extends JFrame {
         loadButton();
         saveButton();
         showPlayerButton();
-
-
         ImageIcon image = new ImageIcon("/Users/justin/IdeaProjects/project_i0q5c/picture/badminton_cross.png");
         pictureLabel.setIcon(image);
+        EventLog.getInstance().clear();
+        shutDown();
+    }
+
+    public void shutDown() {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event.toString() + "\n");
+                }
+                Runtime.getRuntime().halt(0);
+            }
+        });
     }
 
     // MODIFIES: this

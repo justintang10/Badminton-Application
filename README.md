@@ -28,3 +28,24 @@ I love the sport of badminton and am that person that always forget who is servi
 - You can save the state of my application by clicking the save button
 - You can reload the state of my application by clicking the load button
 
+## Phase 4: Task 2
+Wed Apr 12 13:04:14 PDT 2023
+Event log cleared.
+
+Wed Apr 12 13:04:17 PDT 2023
+Added justin
+
+Wed Apr 12 13:04:19 PDT 2023
+Added tang
+
+Wed Apr 12 13:04:21 PDT 2023
+Removed tang
+
+## Phase 4: Task 3
+Looking at my UML diagram, I was not able to implement everything that I wanted
+into my app. If I had more time working on it, I would refactor it so that
+my list of players is implemented directly into my Match class. This would
+make the code less messy. I would also 
+make the Match usable in the app and implement it into the GUI
+
+

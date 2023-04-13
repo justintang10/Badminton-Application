@@ -22,6 +22,7 @@ public class ListOfPlayer implements Writable {
     // EFFECTS: creates a new player with name set to playerName and adds it to listOfPlayers
     public void addPlayerByName(String playerName) {
         listOfPlayers.add(new Player(playerName, 0, 0));
+        EventLog.getInstance().logEvent(new Event("Added " + playerName));
     }
 
     // REQUIRES: player
@@ -36,6 +37,8 @@ public class ListOfPlayer implements Writable {
     // EFFECTS: removes player to listOfPlayers
     public void removePlayerByName(String playerName) {
         listOfPlayers.remove(getPlayer(playerName));
+        EventLog.getInstance().logEvent(new Event("Removed " + playerName));
+
     }
 
     // EFFECTS: Creates of a list of player names from listOfPlayers

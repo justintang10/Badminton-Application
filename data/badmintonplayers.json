@@ -2,11 +2,16 @@
     {
         "wins": 0,
         "loss": 0,
-        "name": "s"
+        "name": "a"
     },
     {
         "wins": 0,
         "loss": 0,
-        "name": "a"
+        "name": "b"
+    },
+    {
+        "wins": 0,
+        "loss": 0,
+        "name": "bc"
     }
 ]}
