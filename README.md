@@ -1,4 +1,4 @@
-# Badminton Application
+# Badminton Application 
 
 ## Purpose
 For my project, I am going to create a badminton application that keeps track of scores and statistics. 
